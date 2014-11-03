@@ -175,6 +175,13 @@ $abstract$
 \end{abstract}
 $endif$
 \begin{fullwidth}
+	
+	\newcounter{tmpc}
+
+	\let\olditem\item
+	\renewcommand{\item}{\setcounter{enumi}{\thetmpc} \olditem \setcounter{tmpc}{\theenumi}}
+	% \renewcommand{\theenumii}{\alph{enumii}} Not sure what this was for :P
+	
 \begin{multicols}{2}
 	$for(include-before)$
 	$include-before$
