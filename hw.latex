@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=0.75in, vmargin=1in]{geometry}
+\usepackage[T1]{fontenc}
+
+\setlength{\topskip}{0mm}\setlength{\parskip}{1ex}\setlength{\parindent}{0mm}
+\usepackage{enumitem}\setlist{nolistsep}
+
+\usepackage{listings,textcomp,color}
+\lstset{language=C,upquote=true,
+  basicstyle=\footnotesize,commentstyle=\textit,stringstyle=\upshape,
+  numbers=left,numberstyle=\footnotesize,stepnumber=1,numbersep=5pt,
+  backgroundcolor=\color{white},frame=single,tabsize=2,
+  showspaces=false,showstringspaces=false,showtabs=false,
+  breaklines=true,breakatwhitespace=true,escapeinside=||
+}
+
+\usepackage{fancyhdr}\pagestyle{fancy}
+\lhead{$date$}\chead{{\bf $title$}}\rhead{$author$}
+
+\usepackage{framed}
+\newenvironment{quo}{\begin{framed}\begin{minipage}{0.97\textwidth}
+  \setlength{\parskip}{4mm}
+}{\end{minipage}\end{framed}}
+
+\renewcommand{\section}[1]{\stepcounter{section} \begin{quo} \textbf{Problem \thesection.} #1 \end{quo}}
+
+\usepackage{lastpage}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\begin{document}
+
+$body$
+
+\end{document}
