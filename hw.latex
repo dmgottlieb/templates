@@ -1,6 +1,29 @@
 \documentclass[12pt]{article}
 \usepackage[hmargin=0.75in, vmargin=1in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{tikz-qtree}
+\usepackage{pgfplots}
+\usetikzlibrary{plotmarks}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{lemma}{Lemma}
+
+\usepackage[$if(spacing)$$spacing$$endif$]{setspace}
+% \usepackage[onehalfspacing]{setspace}
+
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+
+
+% \usepackage{titlesec}
+% \titleformat*{\subsection}{\large\bfseries}
+
+
+\usepackage{CJKutf8}
 
 \setlength{\topskip}{0mm}\setlength{\parskip}{1ex}\setlength{\parindent}{0mm}
 \usepackage{enumitem}\setlist{nolistsep}
@@ -23,6 +46,16 @@
 }{\end{minipage}\end{framed}}
 
 \renewcommand{\section}[1]{\stepcounter{section} \begin{quo} \textbf{Problem \thesection.} #1 \end{quo}}
+
+\renewcommand{\thesubsection}{\alph{subsection}}
+\renewcommand{\subsection}[1]{\stepcounter{subsection} \textbf{\thesubsection. #1} }
+
+\renewcommand{\thesubsubsection}{\roman{subsubsection}}
+\renewcommand{\subsubsection}[1]{\stepcounter{subsubsection} \textbf{\thesubsubsection. #1} }
+
+% Suppress section numbers below Section (here, Section X is Problem X.)
+% \setcounter{secnumdepth}{1}
+
 
 \usepackage{lastpage}
 \cfoot{Page \thepage\ of \pageref{LastPage}}
