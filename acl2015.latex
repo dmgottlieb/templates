@@ -22,6 +22,32 @@
 \usepackage{latexsym}
 \usepackage{setspace}
 
+$if(tables)$
+\usepackage{longtable,booktabs}
+
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
+$endif$
+
+
+
 %\setlength\titlebox{5cm}
 
 % You can expand the titlebox if you need extra space
@@ -35,6 +61,10 @@ $endif$
 
 \author{$for(author)$$author$$sep$ \and $endfor$}
 \date{$date$}
+
+
+
+
 
 \begin{document}
 
