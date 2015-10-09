@@ -1,11 +1,10 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{letter}
 \usepackage[sc]{mathpazo}
-\usepackage{fancyhdr}
 \usepackage{pdflscape}
 \usepackage{rotating}
-\linespread{1.05}         % spacingspatino needs more leading (space between lines)
+\linespread{1.05}         % Palatino needs more leading (space between lines)
 \usepackage[T1]{fontenc}
-\usepackage[$if(spacing)$$spacing$$endif$]{setspace}
+\usepackage{setspace}
 \usepackage{amssymb,amsmath}
 \usepackage{tikz-qtree}
 \allowdisplaybreaks[1] % added to prevent huge gather blocks from getting lost
@@ -102,13 +101,9 @@ $if(graphics)$
  \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
 }%
 $endif$
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
+
+\usepackage{hyperref}
+
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={$author-meta$},
@@ -128,9 +123,9 @@ $if(strikeout)$
 % avoid problems with \sout in headers with hyperref:
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
-\setlength{\parindent}{45pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
+
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+
 $if(numbersections)$
 \setcounter{secnumdepth}{5}
 $else$
@@ -160,11 +155,14 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-$if(preamble)$
-$preamble$
-$endif$
+\signature{$signature$}
+\address{$street$ \\ $town$ \\ $telephone$ \\ $email$}
+
 
 \begin{document}
+	
+	\begin{letter}{$addressee$}
+	
 $if(title)$
 \maketitle
 $endif$
@@ -186,9 +184,7 @@ $if(toc)$
 }
 $endif$
 
-$if(doublespace)$
-\doublespacing
-$endif$
+\opening{Dear $formofaddress$,}
 
 $body$
 
@@ -213,4 +209,7 @@ $for(include-after)$
 $include-after$
 
 $endfor$
+
+\end{letter}
+
 \end{document}

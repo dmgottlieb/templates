@@ -4,7 +4,7 @@
 \usepackage{rotating}
 \linespread{1.05}         % Palatino needs more leading (space between lines)
 \usepackage[T1]{fontenc}
-\usepackage{setspace}
+\usepackage[$if(spacing)$$spacing$$endif$]{setspace}
 \usepackage{amssymb,amsmath}
 \usepackage{tikz-qtree}
 \allowdisplaybreaks[1] % added to prevent huge gather blocks from getting lost
@@ -199,7 +199,7 @@ $if(toc)$
 }
 $endif$
 
-\doublespacing
+
 
 $body$
 

@@ -179,6 +179,11 @@ $abstract$
 \end{abstract}
 $endif$
 
+	\newcounter{tmpc}
+
+	\let\olditem\item
+	\renewcommand{\item}{\setcounter{enumi}{\thetmpc} \olditem \setcounter{tmpc}{\theenumi}}
+
 
 	$for(include-before)$
 	$include-before$
